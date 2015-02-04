@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>draw with canvas</title>
+    <link rel="stylesheet" href="master.css">
+</head>
+<body style="margin: 0">
+
+    <div id="toolbar">
+        <div id="rad">
+            Radius <span id="radval">10</span>
+            <div id="incrad" class="radcontrol">+</div>
+            <div id="decrad" class="radcontrol">-</div>
+        </div>
+
+        <div id="colors">
+            <div class="swatch active" style="background-color: red"></div>
+            <div class="swatch" style="background-color: green" ></div>
+            <div class="swatch" style="background-color: blue" ></div>
+        </div>
+    </div>
+
+
+    <canvas id="canvas">
+
+
+    </canvas>
+    <script src="scrip.js"></script>
+    <script src="radius.js"></script>
+    <script src="colors.js"></script>
+</body>
+
+</html>
