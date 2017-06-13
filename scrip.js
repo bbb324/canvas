@@ -2,7 +2,7 @@
  * Created by junxie on 12/22/14.
  */
 
-class abc {
+class editer {
   constructor(x, y) {
     this.canvas = document.getElementById("canvas");
     this.context = canvas.getContext('2d');
@@ -66,6 +66,6 @@ class abc {
   }
 
 }
-let _instance = new abc();
+let _instance = new editer();
 _instance.init();
 
