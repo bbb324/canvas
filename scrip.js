@@ -10,28 +10,30 @@ class editer {
     this.radius = 10;
     this.dragging = false;
     this.color = 'black';
-
+    this.toolBar = document.getElementById('toolbar');
   }
   init() {
     let self = this;
-    this.canvas.width = window.screen.width;
-    this.canvas.height = window.screen.height;
+    let barHeight = parseInt(window.getComputedStyle(this.toolBar).height);
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = (window.innerHeight - barHeight - 10);
     this.context.lineWidth = this.adius * 2;
     this.canvas.addEventListener('touchstart', function(e) {
       self.engage(e);
-    });
+    }, false);
     this.canvas.addEventListener('touchmove', function(e) {
       self.putPoint(e);
-    });
+    }, false);
     this.canvas.addEventListener('touchend', function(e) {
       self.disengage(e)
-    });
+    }, false);
     this.colors.addEventListener('click', function(e) {
       self.chooseColor(e);
-    })
+    }, false);
   }
   engage(e) {
     this.dragging = true;
+    this.context.strokeStyle = this.color;
     this.context.beginPath();
     this.putPoint(e.touches[0]);
   }

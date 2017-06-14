@@ -2,15 +2,17 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
+body {
+    position: fixed;
+}
 
 #toolbar{
     width: 100%;
     height: 60px;
     padding: 10px;
-    position: fixed;
-    top: 0;
     background-color: #2f2f2f;
     color: white;
+    position: fixed;
 }
 
 .radcontrol{
