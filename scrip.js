@@ -11,6 +11,9 @@ class editer {
     this.dragging = false;
     this.color = 'black';
     this.toolBar = document.getElementById('toolbar');
+    this.decRad = document.getElementById('decrad');
+    this.incRad = document.getElementById('incrad');
+    this.radVal = document.getElementById('radval');
   }
   init() {
     let self = this;
@@ -18,18 +21,7 @@ class editer {
     this.canvas.width = window.innerWidth;
     this.canvas.height = (window.innerHeight - barHeight - 10);
     this.context.lineWidth = this.adius * 2;
-    this.canvas.addEventListener('touchstart', function(e) {
-      self.engage(e);
-    }, false);
-    this.canvas.addEventListener('touchmove', function(e) {
-      self.putPoint(e);
-    }, false);
-    this.canvas.addEventListener('touchend', function(e) {
-      self.disengage(e)
-    }, false);
-    this.colors.addEventListener('click', function(e) {
-      self.chooseColor(e);
-    }, false);
+    this.eventRegister();
   }
   engage(e) {
     this.dragging = true;
@@ -65,6 +57,38 @@ class editer {
   }
   chooseColor(e) {
     this.color = e.target.dataset.color;
+  }
+  changeRadius(val) {
+    if(this.radius < 5 && val === -5) {
+      return;
+    }
+    if(this.radius > 40 && val === 5) {
+      return;
+    }
+    this.radius += val;
+    this.radVal.textContent = this.radius;
+    this.context.lineWidth = this.radius + val;
+  }
+  eventRegister() {
+    let self = this;
+    this.canvas.addEventListener('touchstart', function(e) {
+      self.engage(e);
+    }, false);
+    this.canvas.addEventListener('touchmove', function(e) {
+      self.putPoint(e);
+    }, false);
+    this.canvas.addEventListener('touchend', function(e) {
+      self.disengage(e)
+    }, false);
+    this.colors.addEventListener('click', function(e) {
+      self.chooseColor(e);
+    }, false);
+    this.decRad.addEventListener('click', function(e) {
+      self.changeRadius(-5);
+    });
+    this.incRad.addEventListener('click', function(e) {
+      self.changeRadius(5);
+    });
   }
 
 }
