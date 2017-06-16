@@ -14,6 +14,7 @@ class editer {
     this.decRad = document.getElementById('decrad');
     this.incRad = document.getElementById('incrad');
     this.radVal = document.getElementById('radval');
+    this.camera = document.getElementById('cameraInput');
   }
   init() {
     let self = this;
@@ -69,6 +70,15 @@ class editer {
     this.radVal.textContent = this.radius;
     this.context.lineWidth = this.radius + val;
   }
+  drawOnCanvas(file) {
+    let self = this;
+    let img = new Image();
+    img.src = URL.createObjectURL(file);
+    img.onload = function() {
+      self.canvas.getContext('2d').drawImage(img, 20, 80, 150, 150);
+    }
+  }
+
   eventRegister() {
     let self = this;
     this.canvas.addEventListener('touchstart', function(e) {
@@ -89,6 +99,9 @@ class editer {
     this.incRad.addEventListener('click', function(e) {
       self.changeRadius(5);
     });
+    this.camera.addEventListener('change', function(e) {
+      self.drawOnCanvas(self.camera.files[0]);
+    })
   }
 
 }
