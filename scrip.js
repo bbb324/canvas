@@ -4,107 +4,157 @@
 
 class editer {
   constructor(x, y) {
-    this.canvas = document.getElementById("canvas");
-    this.context = canvas.getContext('2d');
-    this.colors = document.getElementById('colors');
-    this.radius = 10;
-    this.dragging = false;
-    this.color = 'black';
-    this.toolBar = document.getElementById('toolbar');
-    this.decRad = document.getElementById('decrad');
-    this.incRad = document.getElementById('incrad');
-    this.radVal = document.getElementById('radval');
-    this.camera = document.getElementById('cameraInput');
+    this.canvasID = document.getElementById("canvas-id");
+    this.canvasCerti = document.getElementById("canvas-certi");
+    this.canvasChart = document.getElementById("canvas-chart");
+
+
+   
+    this.cameraID = document.getElementById('cameraInput-id');
+    this.cameraCerti = document.getElementById('cameraInput-certi');
+    this.cameraChart = document.getElementById('cameraInput-chart');
+    this.state = 'id';
   }
   init() {
-    let self = this;
-    let barHeight = parseInt(window.getComputedStyle(this.toolBar).height);
-    this.canvas.width = window.innerWidth;
-    this.canvas.height = (window.innerHeight - barHeight - 10);
-    this.context.lineWidth = this.adius * 2;
+    var self = this;
     this.eventRegister();
   }
-  engage(e) {
-    this.dragging = true;
-    this.context.strokeStyle = this.color;
-    this.context.beginPath();
-    this.putPoint(e.touches[0]);
-  }
-  disengage() {
-    this.dragging = false;
-    this.context.beginPath();
-  }
-  putPoint(e) {
-    let x, y;
-    if(e.touches != undefined) {
-      x = e.touches[0].clientX;
-      y = e.touches[0].clientY;
-    }
-    else {
-      x = e.clientX;
-      y = e.clientY;
-    }
-    if(this.dragging) {
-      this.context.strokeStyle = this.color;
-      this.context.lineTo(x, y);
-      this.context.stroke();
-      this.context.beginPath();
-      this.context.arc(x, y, this.radius, 0, Math.PI * 2);
-      this.context.fill();
-      this.context.fillStyle = this.color;
-      this.context.beginPath();
-      this.context.moveTo(x, y);
-    }
-  }
-  chooseColor(e) {
-    this.color = e.target.dataset.color;
-  }
-  changeRadius(val) {
-    if(this.radius < 5 && val === -5) {
-      return;
-    }
-    if(this.radius > 40 && val === 5) {
-      return;
-    }
-    this.radius += val;
-    this.radVal.textContent = this.radius;
-    this.context.lineWidth = this.radius + val;
-  }
-  drawOnCanvas(file) {
-    let self = this;
-    let img = new Image();
+  
+
+  drawOnCanvas(el, file) {
+    var self = this;
+    var img = new Image();
     img.src = URL.createObjectURL(file);
     img.onload = function() {
-      self.canvas.getContext('2d').drawImage(img, 20, 80, 150, 150);
+      el.getContext('2d').drawImage(img, 0,0, el.width, el.height);
     }
+  }
+
+    //选择
+  setId(el) {
+    this.clearActive();
+    this.hideTab();
+    document.getElementsByClassName('data-show-id')[0].style.display = 'block';
+    document.getElementsByClassName('take-pic-id')[0].style.display = 'block';
+    el.className = 'active';
+    this.state = 'id';
+    console.log('id')
+  }
+
+  //选择
+  setCerti(el) {
+    this.clearActive();
+    this.hideTab();
+    document.getElementsByClassName('data-show-certi')[0].style.display = 'block';
+      document.getElementsByClassName('take-pic-certi')[0].style.display = 'block';
+    el.className = 'active';
+    this.state = 'certi';
+    console.log('cert')
+  }
+
+    //选择
+  setChart(el) {
+    this.clearActive();
+    this.hideTab();
+    document.getElementsByClassName('data-show-chart')[0].style.display = 'block';
+    document.getElementsByClassName('take-pic-chart')[0].style.display = 'block';
+    el.className = 'active';
+    this.state = 'chart';
+    console.log('chart')
+  }
+
+  hideTab() {
+    document.getElementsByClassName('data-show-id')[0].style.display = 'none';
+    document.getElementsByClassName('data-show-certi')[0].style.display = 'none';
+    document.getElementsByClassName('data-show-chart')[0].style.display = 'none';
+
+
+    document.getElementsByClassName('take-pic-id')[0].style.display = 'none';
+    document.getElementsByClassName('take-pic-chart')[0].style.display = 'none';
+    document.getElementsByClassName('take-pic-certi')[0].style.display = 'none';
+
+
+  }
+
+  clearActive() {
+    document.getElementsByClassName('active')[0].classList.remove('active');
   }
 
   eventRegister() {
-    let self = this;
-    this.canvas.addEventListener('touchstart', function(e) {
-      self.engage(e);
-    }, false);
-    this.canvas.addEventListener('touchmove', function(e) {
-      self.putPoint(e);
-    }, false);
-    this.canvas.addEventListener('touchend', function(e) {
-      self.disengage(e)
-    }, false);
-    this.colors.addEventListener('click', function(e) {
-      self.chooseColor(e);
-    }, false);
-    this.decRad.addEventListener('click', function(e) {
-      self.changeRadius(-5);
+    var self = this;
+    this.cameraID.addEventListener('change', function(e) {
+      self.drawOnCanvas(self.canvasID, self.cameraID.files[0]);
+      document.getElementsByClassName('canvas-div-id')[0].style.display = 'block';
+      self.showTxt();
     });
-    this.incRad.addEventListener('click', function(e) {
-      self.changeRadius(5);
+    this.cameraCerti.addEventListener('change', function(e) {
+        self.drawOnCanvas(self.canvasCerti, self.cameraCerti.files[0]);
+      document.getElementsByClassName('canvas-div-certi')[0].style.display = 'block';
+      self.showTxt();
     });
-    this.camera.addEventListener('change', function(e) {
-      self.drawOnCanvas(self.camera.files[0]);
-    })
+      this.cameraChart.addEventListener('change', function(e) {
+        self.drawOnCanvas(self.canvasChart, self.cameraChart.files[0]);
+      document.getElementsByClassName('canvas-div-chart')[0].style.display = 'block';
+      self.showTxt();
+    });
+    document.getElementsByClassName('nav')[0].addEventListener('click', function(e) {
+      switch (e.target.id) {
+        case 'id':
+        return self.setId(e.target)
+        case 'certi':
+        return self.setCerti(e.target)
+        case 'chart':
+        return self.setChart(e.target)
+      }
+    });
+
+      document.getElementsByClassName('submit-div')[0].addEventListener('click', function(e) {
+          document.getElementsByClassName('submit-tips')[0].style.display = 'block';
+          setTimeout(function() {
+              document.getElementsByClassName('txt')[0].textContent = '提交完成';
+              document.getElementsByClassName('loading')[0].style.display = 'none';
+          }, 2000)
+          setTimeout(function() {
+              document.getElementsByClassName('submit-tips')[0].style.display = 'none';
+              document.getElementsByClassName('loading')[0].style.display = '';
+              document.getElementsByClassName('txt')[0].textContent = '小秘玩命识别中...';
+          }, 3000)
+      });
+  }
+  showTxt() {
+    var self = this;
+    console.log(this.state)
+    switch (this.state) {
+        case 'id':
+        return self.setIdTxt()
+        case 'certi':
+        return self.setCertiTxt()
+        case 'chart':
+        return self.setChartTxt()
+      }
+  }
+  setIdTxt() {
+    document.getElementById('name').value = '王尼玛';
+    document.getElementById('num').value = 123456789123485938;
+  }
+  setCertiTxt() {
+    document.getElementById('cert-regi').value = '440306104978713'
+    document.getElementById('cert-name').value = '深圳市巡视科技有限公司'
+    document.getElementById('cert-person').value = '黎秋伟'
+    document.getElementById('cert-time').value = '2010-10-11'
+    document.getElementById('cert-verify').value = 'YES'
+  }
+  setChartTxt() {
+    document.getElementById('chart-time').value = '2016/12/1至2016/12/31';
+    document.getElementById('chart-quota').value = '17273720.23元';
+    document.getElementById('chart-tax').value = '2936532.24元';
+    document.getElementById('chart-import-tax').value = '2669621.68元';
+    document.getElementById('import-tax-export').value = '0元';
+    document.getElementById('chart-removed').value = '0元';
+    document.getElementById('chart-shouldbe').value = '266120.56元';
   }
 
 }
-let _instance = new editer();
+var _instance = new editer();
 _instance.init();
 

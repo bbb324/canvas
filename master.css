@@ -3,46 +3,143 @@
     font-family: sans-serif;
 }
 body {
-    position: fixed;
+  background: #F2F3F7
 }
-
-#toolbar{
-    width: 100%;
-    height: 60px;
-    padding: 10px;
-    background-color: #2f2f2f;
-    color: white;
-    position: fixed;
-}
-
-.radcontrol{
-    width: 30px;
-    height: 30px;
-    background-color: #4f4f4f;
-    display: inline-block;
+.canvas-div-id, .canvas-div-certi, .canvas-div-chart {
+    width: 100vw;
     text-align: center;
-    padding: 5px;
-}
+    position: relative;
+    margin-top: 15px;
 
-#rad{
-    float: left;
+  display: none; 
 }
-
-#colors{
-    float: right;
+#canvas {
+  margin-top: 15px;
 }
-
-.swatch{
-    width: 30px;
+.pic-btn {
+        display: block;
+    text-align: center;
+    border: 1px solid orange;
+    border-radius: 5px;
+    width: 152px;
+    margin: 0 auto;
+    height: 40px;
+    line-height: 40px;
+    background: #ff6a00;
+    color: white;
+}
+.label-detail {
+  border-bottom: 1px solid #e6e7eb;
+}
+.label-val {
+      display: inline-block;
+    min-width: 100px;
+}
+.input-val {
+  color: #333;
+  border: 1px solid #e6e7eb;
+  width: 180px;
+  padding-left: 8px;
+  height: 28px;
+  outline: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  margin-left: 20px;
+}
+.data-show {
+    padding-top: 4px;
+    margin-top: 15px;
+    background: white;
+}
+.take-pic-id, .take-pic-chart, .take-pic-certi {
+  background: white;
+  padding-top: 15px;
+  margin-top: 15px;
+  padding-bottom: 15px;
+}
+.label-detail {
+      padding: 8px 30px;
+}
+.nav {
+  border-top: 1px solid #e6e7eb;
+  border-bottom: 1px solid #e6e7eb;
+  background: white;
+}
+.nav label {
+  display: inline-block;
+  width: 32.3%;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  border-right: 1px solid #e6e7eb;
+}
+.nav label:last-child {
+  border-right: none;
+}
+.active {
+  color: #ff6a00;
+}
+.data-show-certi {
+  display: none;
+}
+.data-show-chart {
+  display: none;
+}
+.take-pic-certi, .take-pic-chart {
+  display: none;
+}
+.submit-div {
+    position: fixed;
+    bottom:0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height:60px;
+    background: white;
+}
+.submit-btn {
+    display: block;
+    margin: 0 auto;
+    width: 120px;
+    background-color: #ff6a00;
+    color: white;
     height: 30px;
-    border-radius: 15px;
-    box-shadow: inset 0px 1px 0px rgba(255,255,255,0.5), 0px 2px 2px rgba(0,0,0,0.5);
-    display: inline-block;
-    margin-left: 10px;
-    background-color: cyan;
+    line-height:30px;
+    text-align:center;
 }
+.submit-tips {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0, 0.3);
+    position: absolute;
+    display: none;
+    z-index: 2;
+}
+.submit-tips-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 160px;
+    height: 180px;
 
-.swatch .active{
-    border: 2px solid white;
-    box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.5);
+}
+.submit-info {
+
+    display: block;
+    width: inherit;
+    height: 30px;
+    color: white;
+    text-align: center;
+}
+.loading {
+    width: 157px;
+    height: auto;
+    display: block;
+    margin-top:10px;
+}
+.data-show-ID, .data-show-chart, .data-show-certi {
+    padding-bottom: 60px;
 }

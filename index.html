@@ -8,25 +8,100 @@
 </head>
 <body style="margin: 0">
 
-    <div id="toolbar">
-        <div id="rad">
-            Radius <span id="radval">10</span>
-            <div id="incrad" class="radcontrol">+</div>
-            <div id="decrad" class="radcontrol">-</div>
+<div class="submit-tips">
+    <div class="submit-tips-div">
+        <span class="submit-info"><span class="txt">小秘玩命识别中...</span><img class="loading" src="loading.gif"/></span>
+    </div>
+</div>
+
+
+    <div class="nav">
+        <label class="active" id="id">身份证</label>
+        <label id="certi">营业执照</label>
+        <label id="chart">纳税申报表</label>
+
+    </div>
+    <div class="take-pic-id">
+        <div >
+           <label class="pic-btn" for="cameraInput-id">上传照片</label>
+            <input type="file" capture="camera" accept="image/*" id="cameraInput-id" name="cameraInput"  class="sign_file" style="display: none"/>
         </div>
-        <div id="colors">
-            <div class="swatch" data-color='red' style="background-color: red"></div>
-            <div class="swatch" data-color='green' style="background-color: green" ></div>
-            <div class="swatch" data-color='blue' style="background-color: blue" ></div>
-            <div class="swatch" data-color='white' style="background-color: white" ></div>
+        <div class="canvas-div-id">
+        <canvas id="canvas-id" width="300" height="400"></canvas>
         </div>
-        <input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput"  class="sign_file"/>
+    </div>
+    <div class="take-pic-certi">
+        <div>
+           <label class="pic-btn" for="cameraInput-certi">上传照片</label>
+            <input type="file" capture="camera" accept="image/*" id="cameraInput-certi" name="cameraInput"  class="sign_file" style="display: none"/>
+        </div>
+        <div class="canvas-div-certi">
+        <canvas id="canvas-certi" width="300" height="400"></canvas>
+        </div>
+    </div>
+    <div class="take-pic-chart">
+        <div>
+           <label class="pic-btn" for="cameraInput-chart">上传照片</label>
+            <input type="file" capture="camera" accept="image/*" id="cameraInput-chart" name="cameraInput"  class="sign_file" style="display: none"/>
+        </div>
+        <div class="canvas-div-chart">
+        <canvas id="canvas-chart" width="300" height="400"></canvas>
+        </div>
     </div>
 
-
-    <canvas id="canvas" width="100vh" height="50vh"></canvas>
+    <div class="data-show-id">
+        <div class="label-detail">
+            <label class="label-val">姓名</label><input type="text" class='input-val' id="name"/>
+        </div>
+        <div class="label-detail">
+            <label class="label-val">身份证</label><input type="text" class='input-val' id="num"/>
+        </div>
+    </div>
+    <div class="data-show-certi">
+        <div class="label-detail">
+            <label class="label-val">注册号</label><input type="text" class='input-val' id="cert-regi"/>
+        </div>
+        <div class="label-detail">
+            <label class="label-val">名称</label><input type="text" class='input-val' id="cert-name"/>
+        </div>
+        <div class="label-detail">
+            <label class="label-val">法人</label><input type="text" class='input-val' id='cert-person'/>
+        </div>
+        <div class="label-detail">
+            <label class="label-val">成立时间</label><input type="text" class='input-val' id='cert-time'/>
+        </div>
+        <div class="label-detail">
+            <label class="label-val">公章</label><input type="text" class='input-val' id='cert-verify'/>
+        </div>
+    </div>
+    <div class="data-show-chart">
+        <div class="label-detail">
+            <label class="label-val">所属时间</label><input type="text" class='input-val' id='chart-time'/>
+        </div>
+        <div class="label-detail">
+            <label class="label-val">销售额</label><input type="text" class='input-val' id='chart-quota'/>
+        </div>
+        <div class="label-detail">
+            <label class="label-val">销项税额</label><input type="text" class='input-val' id='chart-tax'/>
+        </div>
+        <div class="label-detail">
+            <label class="label-val">进项税额</label><input type="text" class='input-val' id='chart-import-tax'/>
+        </div>
+        <div class="label-detail">
+            <label class="label-val">进项税额转出</label><input type="text" class='input-val' id='import-tax-export'/>
+        </div> 
+        <div class="label-detail">
+            <label class="label-val">免抵退应退税</label><input type="text" class='input-val' id='chart-removed'/>
+        </div> 
+        <div class="label-detail">
+            <label class="label-val">应纳税额</label><input type="text" class='input-val' id='chart-shouldbe'/>
+        </div>
+    </div>
+    <div class="submit-div">
+        <span class="submit-btn">提交</span>
+    </div>
     <script src="scrip.js"></script>
-    <!-- <script src="radius.js"></script> -->
+
 </body>
 
 </html>
