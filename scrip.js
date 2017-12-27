@@ -8,8 +8,6 @@ class editer {
     this.canvasCerti = document.getElementById("canvas-certi");
     this.canvasChart = document.getElementById("canvas-chart");
 
-
-   
     this.cameraID = document.getElementById('cameraInput-id');
     this.cameraCerti = document.getElementById('cameraInput-certi');
     this.cameraChart = document.getElementById('cameraInput-chart');
@@ -67,13 +65,9 @@ class editer {
     document.getElementsByClassName('data-show-id')[0].style.display = 'none';
     document.getElementsByClassName('data-show-certi')[0].style.display = 'none';
     document.getElementsByClassName('data-show-chart')[0].style.display = 'none';
-
-
     document.getElementsByClassName('take-pic-id')[0].style.display = 'none';
     document.getElementsByClassName('take-pic-chart')[0].style.display = 'none';
     document.getElementsByClassName('take-pic-certi')[0].style.display = 'none';
-
-
   }
 
   clearActive() {
@@ -90,18 +84,24 @@ class editer {
             document.getElementsByClassName('canvas-div-id')[0].style.display = 'block';
             self.showTxt();
         }, 1000);
-
-
     });
     this.cameraCerti.addEventListener('change', function(e) {
-        self.drawOnCanvas(self.canvasCerti, self.cameraCerti.files[0]);
-        document.getElementsByClassName('canvas-div-certi')[0].style.display = 'block';
-        self.showTxt();
+        document.getElementsByClassName('submit-tips')[0].style.display = 'block';
+        setTimeout(function() {
+            self.drawOnCanvas(self.canvasCerti, self.cameraCerti.files[0]);
+            document.getElementsByClassName('submit-tips')[0].style.display = 'none';
+            document.getElementsByClassName('canvas-div-certi')[0].style.display = 'block';
+            self.showTxt();
+        }, 1000);
     });
-      this.cameraChart.addEventListener('change', function(e) {
-        self.drawOnCanvas(self.canvasChart, self.cameraChart.files[0]);
-        document.getElementsByClassName('canvas-div-chart')[0].style.display = 'block';
-        self.showTxt();
+    this.cameraChart.addEventListener('change', function(e) {
+        document.getElementsByClassName('submit-tips')[0].style.display = 'block';
+        setTimeout(function() {
+            self.drawOnCanvas(self.canvasChart, self.cameraChart.files[0]);
+            document.getElementsByClassName('submit-tips')[0].style.display = 'none';
+            document.getElementsByClassName('canvas-div-chart')[0].style.display = 'block';
+            self.showTxt();
+        }, 1000);
     });
     document.getElementsByClassName('nav')[0].addEventListener('click', function(e) {
       switch (e.target.id) {
