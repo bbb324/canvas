@@ -33,12 +33,12 @@ body {
 }
 .label-val {
       display: inline-block;
-    min-width: 100px;
+    min-width: 130px;
 }
 .input-val {
   color: #333;
   border: 1px solid #e6e7eb;
-  width: 180px;
+  width: 158px;
   padding-left: 8px;
   height: 28px;
   outline: none;
@@ -46,6 +46,12 @@ body {
   border-radius: 0;
   margin-left: 20px;
 }
+
+.input-time {
+    width: 50px;
+    margin-left:4px;
+}
+
 .data-show {
     padding-top: 4px;
     margin-top: 15px;
@@ -58,7 +64,7 @@ body {
   padding-bottom: 15px;
 }
 .label-detail {
-      padding: 8px 30px;
+      padding: 8px 15px 8px 30px;
 }
 .nav {
   border-top: 1px solid #e6e7eb;
@@ -94,17 +100,16 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    height:60px;
-    background: white;
+    height:48px;
+    background-color: #ff6a00;
 }
 .submit-btn {
     display: block;
     margin: 0 auto;
     width: 120px;
-    background-color: #ff6a00;
     color: white;
-    height: 30px;
-    line-height:30px;
+    height: 24px;
+    line-height:24px;
     text-align:center;
 }
 .submit-tips {
@@ -140,6 +145,6 @@ body {
     display: block;
     margin-top:10px;
 }
-.data-show-ID, .data-show-chart, .data-show-certi {
+.data-show-id, .data-show-chart, .data-show-certi {
     padding-bottom: 60px;
 }

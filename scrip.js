@@ -83,19 +83,25 @@ class editer {
   eventRegister() {
     var self = this;
     this.cameraID.addEventListener('change', function(e) {
-      self.drawOnCanvas(self.canvasID, self.cameraID.files[0]);
-      document.getElementsByClassName('canvas-div-id')[0].style.display = 'block';
-      self.showTxt();
+        document.getElementsByClassName('submit-tips')[0].style.display = 'block';
+        setTimeout(function() {
+            self.drawOnCanvas(self.canvasID, self.cameraID.files[0]);
+            document.getElementsByClassName('submit-tips')[0].style.display = 'none';
+            document.getElementsByClassName('canvas-div-id')[0].style.display = 'block';
+            self.showTxt();
+        }, 1000);
+
+
     });
     this.cameraCerti.addEventListener('change', function(e) {
         self.drawOnCanvas(self.canvasCerti, self.cameraCerti.files[0]);
-      document.getElementsByClassName('canvas-div-certi')[0].style.display = 'block';
-      self.showTxt();
+        document.getElementsByClassName('canvas-div-certi')[0].style.display = 'block';
+        self.showTxt();
     });
       this.cameraChart.addEventListener('change', function(e) {
         self.drawOnCanvas(self.canvasChart, self.cameraChart.files[0]);
-      document.getElementsByClassName('canvas-div-chart')[0].style.display = 'block';
-      self.showTxt();
+        document.getElementsByClassName('canvas-div-chart')[0].style.display = 'block';
+        self.showTxt();
     });
     document.getElementsByClassName('nav')[0].addEventListener('click', function(e) {
       switch (e.target.id) {
@@ -109,16 +115,7 @@ class editer {
     });
 
       document.getElementsByClassName('submit-div')[0].addEventListener('click', function(e) {
-          document.getElementsByClassName('submit-tips')[0].style.display = 'block';
-          setTimeout(function() {
-              document.getElementsByClassName('txt')[0].textContent = '提交完成';
-              document.getElementsByClassName('loading')[0].style.display = 'none';
-          }, 2000)
-          setTimeout(function() {
-              document.getElementsByClassName('submit-tips')[0].style.display = 'none';
-              document.getElementsByClassName('loading')[0].style.display = '';
-              document.getElementsByClassName('txt')[0].textContent = '小秘玩命识别中...';
-          }, 3000)
+
       });
   }
   showTxt() {
@@ -142,16 +139,16 @@ class editer {
     document.getElementById('cert-name').value = '深圳市巡视科技有限公司'
     document.getElementById('cert-person').value = '黎秋伟'
     document.getElementById('cert-time').value = '2010-10-11'
-    document.getElementById('cert-verify').value = 'YES'
   }
   setChartTxt() {
-    document.getElementById('chart-time').value = '2016/12/1至2016/12/31';
-    document.getElementById('chart-quota').value = '17273720.23元';
-    document.getElementById('chart-tax').value = '2936532.24元';
-    document.getElementById('chart-import-tax').value = '2669621.68元';
-    document.getElementById('import-tax-export').value = '0元';
-    document.getElementById('chart-removed').value = '0元';
-    document.getElementById('chart-shouldbe').value = '266120.56元';
+    document.getElementById('chart-time-s').value = '2016/12/1';
+    document.getElementById('chart-time-e').value = '2016/12/31';
+    document.getElementById('chart-quota').value = '17273720.23';
+    document.getElementById('chart-tax').value = '2936532.24';
+    document.getElementById('chart-import-tax').value = '2669621.68';
+    document.getElementById('import-tax-export').value = '0';
+    document.getElementById('chart-removed').value = '0';
+    document.getElementById('chart-shouldbe').value = '266120.56';
   }
 
 }

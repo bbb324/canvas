@@ -3,14 +3,14 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>draw with canvas</title>
+    <title>提交准入信息</title>
     <link rel="stylesheet" href="master.css">
 </head>
 <body style="margin: 0">
 
 <div class="submit-tips">
     <div class="submit-tips-div">
-        <span class="submit-info"><span class="txt">小秘玩命识别中...</span><img class="loading" src="loading.gif"/></span>
+        <span class="submit-info"><span class="txt">小蜜玩命识别中...</span><img class="loading" src="loading.gif"/></span>
     </div>
 </div>
 
@@ -27,7 +27,7 @@
             <input type="file" capture="camera" accept="image/*" id="cameraInput-id" name="cameraInput"  class="sign_file" style="display: none"/>
         </div>
         <div class="canvas-div-id">
-        <canvas id="canvas-id" width="300" height="400"></canvas>
+        <canvas id="canvas-id" width="300" height="200"></canvas>
         </div>
     </div>
     <div class="take-pic-certi">
@@ -54,7 +54,7 @@
             <label class="label-val">姓名</label><input type="text" class='input-val' id="name"/>
         </div>
         <div class="label-detail">
-            <label class="label-val">身份证</label><input type="text" class='input-val' id="num"/>
+            <label class="label-val">身份证</label><input type="number" class='input-val' id="num"/>
         </div>
     </div>
     <div class="data-show-certi">
@@ -70,31 +70,32 @@
         <div class="label-detail">
             <label class="label-val">成立时间</label><input type="text" class='input-val' id='cert-time'/>
         </div>
-        <div class="label-detail">
-            <label class="label-val">公章</label><input type="text" class='input-val' id='cert-verify'/>
-        </div>
+
     </div>
     <div class="data-show-chart">
         <div class="label-detail">
-            <label class="label-val">所属时间</label><input type="text" class='input-val' id='chart-time'/>
+            <label class="label-val">起始时间</label><input type="text" class='input-val ' id='chart-time-s'/>
         </div>
         <div class="label-detail">
-            <label class="label-val">销售额</label><input type="text" class='input-val' id='chart-quota'/>
+            <label class="label-val">结束时间</label><input type="text" class='input-val ' id='chart-time-e'/>
         </div>
         <div class="label-detail">
-            <label class="label-val">销项税额</label><input type="text" class='input-val' id='chart-tax'/>
+            <label class="label-val">销售额(元)</label><input type="text" class='input-val ' id='chart-quota'/>
         </div>
         <div class="label-detail">
-            <label class="label-val">进项税额</label><input type="text" class='input-val' id='chart-import-tax'/>
+            <label class="label-val">销项税额(元)</label><input type="text" class='input-val' id='chart-tax'/>
         </div>
         <div class="label-detail">
-            <label class="label-val">进项税额转出</label><input type="text" class='input-val' id='import-tax-export'/>
+            <label class="label-val">进项税额(元)</label><input type="text" class='input-val' id='chart-import-tax'/>
+        </div>
+        <div class="label-detail">
+            <label class="label-val">进项税额转出(元)</label><input type="text" class='input-val' id='import-tax-export'/>
         </div> 
         <div class="label-detail">
-            <label class="label-val">免抵退应退税</label><input type="text" class='input-val' id='chart-removed'/>
+            <label class="label-val">免抵退应退税(元)</label><input type="text" class='input-val' id='chart-removed'/>
         </div> 
         <div class="label-detail">
-            <label class="label-val">应纳税额</label><input type="text" class='input-val' id='chart-shouldbe'/>
+            <label class="label-val">应纳税额(元)</label><input type="text" class='input-val' id='chart-shouldbe'/>
         </div>
     </div>
     <div class="submit-div">
